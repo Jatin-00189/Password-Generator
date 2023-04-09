@@ -1,6 +1,6 @@
-#!/usr/bin/python3
 import random
 import string
+import argparse
 
 class Password:
     def __init__(self,charset,length):
@@ -42,8 +42,13 @@ class Password:
 
 
 
+args = argparse.ArgumentParser("python3 pass.py -c [CHARSET] -l [LENGTH]  # l for lowercase , u for uppercase , s for sepcial chars , d for digits")
+args.add_argument('-c')
+args.add_argument('-l')
+option = args.parse_args()
 
-password = Password('lds',8)
+
+password = Password(option.c,int(option.l))
 
 password.set_the_charset()
 password.get_char_array()
